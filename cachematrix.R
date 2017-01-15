@@ -1,23 +1,31 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
+#Es - Almacena una matriz y su inversa 
+#En - Store a matrix and its inverse
 
 makeCacheMatrix <- function(x = matrix()) {
-		inverse <- NULL
+		inversa <- NULL
 		set <- function(y){
 			x <<- y
-			inverse <<- NULL
+			inversa <<- NULL
 		}
 
 		get <- function() x
-    	setinverse <- function(inv) inverse <<- inv
-    	getinverse <- function() inverse
-    	list(set=set, get=get, setinverse=setinverse, getinverse=getinverse)
+    	setInversa <- function(inv) inversa <<- inv
+    	getInversa <- function() inversa
+    	list(set=set, get=get, setInversa=setInversa, getInversa=getInversa)
 }
 
-## Write a short comment describing this function
+#Es - Obtiene la inversa de una matriz, si esta ya ha sido cacheada, devuelve esta en vez de recalcularla 
+#En - Get the inverse of a matrix, if this is already cached, it is not calculated
+
 
 cacheSolve <- function(x, ...) {
-   
+    inversa <- x$getInversa()
+    if(!is.null(inv)) {
+        return(inv)
+    }
+    
+    matriz <- x$get()
+    inversa <- solve(matriz)
+    x$setInversa(inversa)
+    inversa
 }
